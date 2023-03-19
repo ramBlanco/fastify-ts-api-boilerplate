@@ -1,0 +1,9 @@
+node_modules
+./.env
+.env
+build
+
+# volume for postgresql container docker
+postgresql-data
+# volume for s3 container docker
+s3

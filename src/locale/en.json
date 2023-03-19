@@ -1,0 +1,10 @@
+{
+	"routes": {
+		"login": {
+			"description": "This endpoint allows authenticating an user and obtaining an access token that will be used to make requests to other endpoints that require authentication. To login, a POST request must be sent with the user s credentials (email and password) in the body of the request. If the credentials are valid, the server will respond with an access token."
+		},
+		"status": {
+			"description": "This endpoint allows us know the status of current server"
+		}
+	}
+}

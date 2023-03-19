@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  db:
+    restart: always
+    build:
+      context: docker/postgresql/
+      dockerfile: Dockerfile
+    env_file: docker/postgresql/.env
+    expose:
+      - '5440'
+    ports:
+      - '5440:5432'
+  sqs:
+    image: softwaremill/elasticmq-native
+    ports:
+      - '9324:9324'
+      - '9325:9325'
+    volumes:
+      - './elasticmq.conf:/opt/elasticmq.conf'
+  s3:
+    restart: always
+    image: minio/minio
+    ports:
+      - '9000:9000'
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: 12345678
+    volumes:
+      - 's3:/data'
+    command: server /data
+  api:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - './src:/home/node/app/src'
+      - './nodemon.json:/home/node/app/nodemon.json'
+    expose:
+      - '4000'
+    ports:
+      - '4000:4000'
+    command: npm run dev
+volumes:
+  api:
+    driver: local
+  sqs:
+    driver: local
+  s3:
+    driver: local
+  db:
+    driver: local

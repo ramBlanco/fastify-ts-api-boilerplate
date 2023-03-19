@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: docker/nodejs/
+      dockerfile: Dockerfile
+      target: production
+    command: node build/index.js
