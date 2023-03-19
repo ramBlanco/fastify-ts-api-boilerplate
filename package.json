@@ -1,7 +1,7 @@
 {
-  "name": "docker-template-sqs",
+  "name": "fastify-ts-api-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Template for API using fastify",
   "main": "build/main.js",
   "scripts": {
     "test": "jest",
@@ -14,7 +14,7 @@
     "prettier-fix": "prettier --write \"src/**/*.ts\"",
     "code:check": "lint:fix; npm run prettier-fix"
   },
-  "author": "",
+  "author": "Ramses Banco (@ramBlanco)",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",

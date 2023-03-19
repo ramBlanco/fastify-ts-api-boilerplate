@@ -80,13 +80,13 @@ Note: Remember to modify/create the environment variables in the .env files (`./
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/ramBlanco/fastify-ts-api-boilerplate
 ```
 
 Go to the project directory
 
 ```bash
-  cd my-project
+  cd fastify-ts-api-boilerplate
 ```
 
 Install dependencies
