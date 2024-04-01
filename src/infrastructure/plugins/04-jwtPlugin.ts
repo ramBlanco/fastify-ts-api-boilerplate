@@ -12,7 +12,7 @@ function jwtPlugin(fastifyInstance: FastifyInstance, _opts: Record<never, never>
     },
   })
 
-  fastifyInstance.decorate('authenticate', async (request: FastifyRequest, reply: FastifyReply) => {
+  fastifyInstance.addHook('onRequest', async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const isWhiteListed = whiteList.some((trustedUrl) => request.url.includes(trustedUrl))
       if (!isWhiteListed) {

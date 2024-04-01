@@ -11,7 +11,7 @@ const sequelizePlugin = (
   const connectionString = `postgres://${sequelizeOptions.username}:${sequelizeOptions.password}@${sequelizeOptions.host}/${sequelizeOptions.database}`
   const sequelize = new Sequelize(connectionString)
 
-  fastifyInstance.addHook('onClose', (_, done) => sequelize.close().finally(done))
+  fastifyInstance.addHook('onClose', () => sequelize.close().finally())
 
   fastifyInstance.decorate('db', sequelize)
 
